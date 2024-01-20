@@ -1,0 +1,18 @@
+html {
+  width: 1920px;
+  height: 1080px;
+}
+
+body {
+  width: 1920px;
+  height: 1080px;
+  color: #7d8083;
+  background: #141426;
+  overflow: hidden;
+  margin: 0;
+  scroll-behavior: smooth;
+  background-position: center;
+  background-repeat: no-repeat;
+  transform-origin: 0% 0%;
+  -webkit-transform-origin: 0% 0%;
+}
