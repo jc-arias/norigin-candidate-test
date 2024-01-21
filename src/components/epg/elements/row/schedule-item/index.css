@@ -1,0 +1,29 @@
+.schedule-item {
+  height: 150px;
+  display: inline-block;
+  background: #f157b9 ;
+  color: white;
+  outline: 3px solid black;
+  overflow: hidden;
+  white-space: nowrap;
+  padding-left: 25px;
+}
+
+.schedule-item h1,
+.schedule-item h2 {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.schedule-item h1 {
+  font-size: 35px;
+}
+
+.schedule-item h2 {
+  font-size: 20px;
+}
+
+.schedule-item-focused {
+  background: #b357ea;
+}

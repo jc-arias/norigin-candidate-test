@@ -1,0 +1,6 @@
+export const constants = {
+  HOURS_IN_A_DAY: 24,
+  MINUTES_IN_AN_HOUR: 60,
+  PIXELS_PER_MINUTE: 7,
+  MILLISECONDS_IN_A_SECOND: 1000
+}

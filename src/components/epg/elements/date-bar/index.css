@@ -1,0 +1,29 @@
+.epg-date-today {
+  height: 50px;
+  width: 300px;
+  display: inline-block;
+  text-align: center;
+  z-index: 1;
+  position: sticky;
+  background: #281a3b;
+  color: #f157b9 ;
+}
+
+.epg-date-bar {
+  height: 50px;
+  width: max-content;
+  color: white;
+  line-height: 50px;
+  vertical-align: middle;
+  font-size: 30px;
+}
+
+.date-bar-item {
+  background: #281a3b;
+  height: 50px;
+  display: inline-block;
+}
+
+.epg-date-bar-scrollable {
+  display: inline-block;
+}

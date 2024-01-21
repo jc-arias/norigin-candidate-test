@@ -1,8 +1,8 @@
 interface Schedule {
   title: string
   id: string
-  start: string
-  end: string
+  start: Date
+  end: Date
 }
 
 interface Channel {
