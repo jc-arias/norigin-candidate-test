@@ -7,10 +7,20 @@ import './index.css'
 interface ScheduleItemProps {
   item: Schedule
   channel: string
-  idx: number
+  rowIndex: number
+  itemIndex: number
+  onFocusRow: Function
+  onFocusItem: Function
 }
 
-const ScheduleItem: React.FC<ScheduleItemProps> = ({ item, channel, idx }) => {
+const ScheduleItem: React.FC<ScheduleItemProps> = ({
+  item,
+  channel,
+  rowIndex,
+  itemIndex,
+  onFocusRow,
+  onFocusItem
+}) => {
   const { title, start, end } = item
 
   const width = useMemo(() => {
@@ -24,13 +34,25 @@ const ScheduleItem: React.FC<ScheduleItemProps> = ({ item, channel, idx }) => {
     }
   }, [item])
 
+  const isLive = useMemo(() => {
+    const now: Date = new Date()
+    const start: Date = new Date(item.start)
+    const end: Date = new Date(item.end)
+
+    return end > now && now > start
+  }, [item])
+
   return (
     <InteractiveElement
-      className={'schedule-item'}
-      focusedClassName={'schedule-item-focused'}
+      className={`schedule-item ${isLive ? 'live' : ''}`}
+      focusedClassName={isLive ? 'live-focused' : 'schedule-item-focused'}
       onClick={() => console.log('onClick', item)}
       style={{ width }}
-      focusKey={`${channel}-schedule-item-number-${idx}`}
+      focusKey={`${channel}-schedule-item-number-${itemIndex}`}
+      onFocus={() => {
+        onFocusRow(rowIndex)
+        onFocusItem(itemIndex)
+      }}
     >
       <h1 className={'schedule-title'}>{title}</h1>
       <h2 className={'schedule-duration'}>

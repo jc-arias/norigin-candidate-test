@@ -5,17 +5,36 @@ import './index.css'
 
 interface EpgRowProps {
   channel: Channel
-  index: number
+  rowIndex: number
+  onFocusRow: Function
+  onFocusItem: Function
+  horizontalStyle: Object
 }
 
-const EpgRow: React.FC<EpgRowProps> = ({ channel, index }) => {
+const EpgRow: React.FC<EpgRowProps> = ({
+  channel,
+  rowIndex,
+  onFocusRow,
+  onFocusItem,
+  horizontalStyle
+}) => {
   const { id, title, images, schedules } = channel
   return (
     <div style={{ display: 'inline-flex' }}>
-      <ChannelItem id={id} title={title} icon={images.logo} index={index} />
-      <div className={'schedule-row'}>
-        {schedules.map((item: Schedule, idx: number) => {
-          return <ScheduleItem item={item} channel={title} idx={idx} />
+      <ChannelItem id={id} title={title} icon={images.logo} index={rowIndex} />
+      <div className={'schedule-row'} style={horizontalStyle}>
+        {schedules.map((item: Schedule, itemIdx: number) => {
+          return (
+            <ScheduleItem
+              key={`${title}-schedule-item-number-${itemIdx}`}
+              item={item}
+              channel={title}
+              rowIndex={rowIndex}
+              itemIndex={itemIdx}
+              onFocusRow={onFocusRow}
+              onFocusItem={onFocusItem}
+            />
+          )
         })}
       </div>
     </div>

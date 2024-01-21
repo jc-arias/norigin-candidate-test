@@ -3,10 +3,10 @@
   width: 300px;
   display: inline-block;
   text-align: center;
-  z-index: 1;
-  position: sticky;
+  z-index: 5;
+  position: absolute;
   background: #281a3b;
-  color: #f157b9 ;
+  color: #f157b9;
 }
 
 .epg-date-bar {
@@ -16,6 +16,10 @@
   line-height: 50px;
   vertical-align: middle;
   font-size: 30px;
+  margin-top: 120px;
+  margin-left: 300px;
+  position: relative;
+  z-index: 1;
 }
 
 .date-bar-item {

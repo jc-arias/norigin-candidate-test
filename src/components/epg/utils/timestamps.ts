@@ -2,11 +2,7 @@ import { constants } from './constants'
 
 export const getDailyTimestamps = () => {
   const today = new Date()
-
-  today.setMinutes(0)
-  today.setSeconds(0)
-  today.setMilliseconds(0)
-
+  today.setHours(0, 0, 0, 0)
   let hours = []
 
   for (let i = 0; i < constants.HOURS_IN_A_DAY; i++) {

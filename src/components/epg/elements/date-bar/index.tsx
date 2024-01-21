@@ -5,12 +5,12 @@ import './index.css'
 
 interface EpgDateBarProps {
   hours: Date[]
+  horizontalStyle: Object
 }
 
-const EpgDateBar: React.FC<EpgDateBarProps> = ({ hours }) => {
+const EpgDateBar: React.FC<EpgDateBarProps> = ({ hours, horizontalStyle }) => {
   return (
-    <div className={'epg-date-bar'}>
-      <div className={'epg-date-today'}>21 January, 2024</div>
+    <div className={'epg-date-bar'} style={horizontalStyle}>
       <div className={'epg-date-bar-scrollable'}>
         {hours.map((item: Date, index: number) => {
           return (

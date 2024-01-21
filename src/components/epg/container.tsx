@@ -1,12 +1,13 @@
 import React, { useEffect, useMemo, useState } from 'react'
-import getEpg from '../../services/epg'
 import {
   FocusContext,
   useFocusable
 } from '@noriginmedia/norigin-spatial-navigation'
-import './index.css'
-import { getDailyTimestamps } from './utils/timestamps'
+import getEpg from '../../services/epg'
 import EpgComponent from './elements'
+import { getDailyTimestamps } from './utils/timestamps'
+import { getDailyTimeframes } from './utils/dailyTimeframes'
+import './index.css'
 
 const EpgContainer: React.FC = () => {
   const { ref, focusKey, focusSelf } = useFocusable({
@@ -16,6 +17,9 @@ const EpgContainer: React.FC = () => {
   const [data, setData] = useState<EpgResponse>()
   const hours = useMemo(() => {
     return getDailyTimestamps()
+  }, [])
+  const timeframes = useMemo(() => {
+    return getDailyTimeframes()
   }, [])
 
   useEffect(() => {
@@ -38,6 +42,7 @@ const EpgContainer: React.FC = () => {
           <EpgComponent
             channels={data.channels}
             hours={hours}
+            timeframes={timeframes}
             onFocusSelf={focusSelf}
           />
         ) : (

@@ -3,6 +3,7 @@
   height: 150px;
   background: #281a3b;
   outline: 3px solid black;
+  z-index: 5;
 }
 
 .channel-icon {

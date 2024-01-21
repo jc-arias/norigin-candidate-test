@@ -1,12 +1,11 @@
 .schedule-item {
   height: 150px;
   display: inline-block;
-  background: #f157b9 ;
+  background: #f157b9;
   color: white;
   outline: 3px solid black;
   overflow: hidden;
   white-space: nowrap;
-  padding-left: 25px;
 }
 
 .schedule-item h1,
@@ -14,6 +13,7 @@
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
+  margin-left: 25px;
 }
 
 .schedule-item h1 {
@@ -26,4 +26,14 @@
 
 .schedule-item-focused {
   background: #b357ea;
+}
+
+.live {
+  background: white;
+  color: #f157b9;
+}
+
+.live-focused {
+  background: white;
+  color: #b357ea;
 }

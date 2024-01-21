@@ -1,0 +1,15 @@
+.epg-banner {
+  width: 1920px;
+  height: 120px;
+  background: black;
+  z-index: 10;
+  position: absolute;
+  top: 0;
+}
+
+.epg-banner h1 {
+  color: #f157b9;
+  text-align: right;
+  font-size: 50px;
+  margin-right: 50px;
+}

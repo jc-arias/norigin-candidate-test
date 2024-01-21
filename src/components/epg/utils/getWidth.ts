@@ -6,7 +6,7 @@ export const getWidth = (start: Date, end: Date) => {
 
   const duration: number =
     (endToDate.getTime() - startToDate.getTime()) /
-    (constants.MILLISECONDS_IN_A_SECOND * constants.MINUTES_IN_AN_HOUR)
+    (constants.MILLISECONDS_IN_A_SECOND * constants.SECONDS_IN_A_MINUTE)
 
   return `${duration * constants.PIXELS_PER_MINUTE}px`
 }
