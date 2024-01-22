@@ -10,10 +10,18 @@ interface EpgTimeTrackerProps {
 const EpgTimeTracker: React.FC<EpgTimeTrackerProps> = ({ howManyChannels }) => {
   const [style, setStyle] = useState<CSSProperties>()
   useEffect(() => {
-    setStyle({
-      height: `${howManyChannels * constants.ROW_HEIGHT}px`,
-      marginLeft: getTimeTrackerPosition()
-    })
+    const updateStyle = () => {
+      setStyle({
+        height: `${howManyChannels * constants.ROW_HEIGHT}px`,
+        marginLeft: getTimeTrackerPosition()
+      })
+    }
+    updateStyle()
+    const interval = setInterval(
+      updateStyle,
+      constants.MILLISECONDS_IN_A_SECOND * constants.SECONDS_IN_A_MINUTE
+    )
+    return () => clearInterval(interval)
   }, [])
   return <div className={'epg-time-tracker'} style={style} />
 }

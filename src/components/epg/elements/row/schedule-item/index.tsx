@@ -1,7 +1,8 @@
-import React, { useEffect, useMemo } from 'react'
+import React, { useCallback, useEffect, useMemo, useState } from 'react'
 import InteractiveElement from '../../../../../elements/list-items'
 import { formatTimestamp } from '../../../utils/formatTimestamp'
 import { getWidth } from '../../../utils/getWidth'
+import { constants } from '../../../utils/constants'
 import './index.css'
 
 interface ScheduleItemProps {
@@ -11,7 +12,7 @@ interface ScheduleItemProps {
   itemIndex: number
   onFocusRow: Function
   onFocusItem: Function
-  focusId: string,
+  focusId: string
   onSetFirstFocus: Function
 }
 
@@ -27,6 +28,19 @@ const ScheduleItem: React.FC<ScheduleItemProps> = ({
 }) => {
   const { title, start, end } = item
 
+  const checkIfIsLive = useCallback(() => {
+    if (item) {
+      const now: Date = new Date()
+      const start: Date = new Date(item.start)
+      const end: Date = new Date(item.end)
+
+      return end > now && now > start
+    }
+    return false
+  }, [item])
+
+  const [isLive, setIsLive] = useState<boolean>(checkIfIsLive())
+
   const width = useMemo(() => {
     return getWidth(start, end)
   }, [item])
@@ -38,19 +52,18 @@ const ScheduleItem: React.FC<ScheduleItemProps> = ({
     }
   }, [item])
 
-  const isLive = useMemo(() => {
-    const now: Date = new Date()
-    const start: Date = new Date(item.start)
-    const end: Date = new Date(item.end)
-
-    return end > now && now > start
-  }, [item])
-
   useEffect(() => {
     if (rowIndex === 0 && isLive) {
       onSetFirstFocus(focusId)
     }
+
+    const intervalId = setInterval(() => {
+      setIsLive(checkIfIsLive())
+    }, constants.MILLISECONDS_IN_A_SECOND * constants.SECONDS_IN_A_MINUTE)
+
+    return () => clearInterval(intervalId)
   }, [])
+
   return (
     <InteractiveElement
       className={`schedule-item ${isLive ? 'live' : ''}`}
