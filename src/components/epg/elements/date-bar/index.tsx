@@ -2,15 +2,22 @@ import React from 'react'
 import { formatTimestamp } from '../../utils/formatTimestamp'
 import { constants } from '../../utils/constants'
 import './index.css'
+import EpgTimeTracker from '../time-tracker'
 
 interface EpgDateBarProps {
   hours: Date[]
   horizontalStyle: Object
+  howManyChannels: number
 }
 
-const EpgDateBar: React.FC<EpgDateBarProps> = ({ hours, horizontalStyle }) => {
+const EpgDateBar: React.FC<EpgDateBarProps> = ({
+  hours,
+  horizontalStyle,
+  howManyChannels
+}) => {
   return (
     <div className={'epg-date-bar'} style={horizontalStyle}>
+      <EpgTimeTracker howManyChannels={howManyChannels} />
       <div className={'epg-date-bar-scrollable'}>
         {hours.map((item: Date, index: number) => {
           return (

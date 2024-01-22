@@ -1,0 +1,7 @@
+.epg-time-tracker {
+  width: 6px;
+  background-color: black;
+  outline: 1px solid #f157b9;
+  position: absolute;
+  z-index: 7;
+}

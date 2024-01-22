@@ -4,6 +4,7 @@ import EpgRow from './row'
 import EpgBanner from './row/banner'
 import { animateHorizontal, animateVertical } from '../utils/animations'
 import { constants } from '../utils/constants'
+import EpgTodayDate from './today'
 
 interface EpgComponentProps {
   channels: Channel[]
@@ -71,7 +72,12 @@ const EpgComponent: React.FC<EpgComponentProps> = ({
   return (
     <>
       <EpgBanner />
-      <EpgDateBar hours={hours} horizontalStyle={horizontalStyle} />
+      <EpgTodayDate />
+      <EpgDateBar
+        howManyChannels={channels.length}
+        hours={hours}
+        horizontalStyle={horizontalStyle}
+      />
       <div style={verticalStyle}>
         {channels.map((channel: Channel, index: number) => {
           return (

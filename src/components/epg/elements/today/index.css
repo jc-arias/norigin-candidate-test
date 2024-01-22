@@ -1,0 +1,14 @@
+.epg-today-date {
+  height: 50px;
+  width: 300px;
+  display: inline-block;
+  text-align: center;
+  z-index: 3;
+  position: absolute;
+  background: #281a3b;
+  color: #f157b9;
+  top: 120px;
+  line-height: 50px;
+  vertical-align: middle;
+  font-size: 30px;
+}
