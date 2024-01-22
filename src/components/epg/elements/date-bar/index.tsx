@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { CSSProperties } from 'react'
 import { formatTimestamp } from '../../utils/formatTimestamp'
 import { constants } from '../../utils/constants'
 import './index.css'
@@ -6,7 +6,7 @@ import EpgTimeTracker from '../time-tracker'
 
 interface EpgDateBarProps {
   hours: Date[]
-  horizontalStyle: Object
+  horizontalStyle: CSSProperties
   howManyChannels: number
 }
 

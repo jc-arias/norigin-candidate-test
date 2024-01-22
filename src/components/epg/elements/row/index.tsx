@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { CSSProperties } from 'react'
 import ChannelItem from './channel-item'
 import ScheduleItem from './schedule-item'
 import './index.css'
@@ -8,7 +8,7 @@ interface EpgRowProps {
   rowIndex: number
   onFocusRow: Function
   onFocusItem: Function
-  horizontalStyle: Object
+  horizontalStyle: CSSProperties
   onSetFocus: Function
 }
 

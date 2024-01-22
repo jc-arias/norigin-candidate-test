@@ -1,10 +1,10 @@
-import React, { useCallback, useEffect, useState } from 'react'
+import React, { CSSProperties, useCallback, useEffect, useState } from 'react'
 import EpgDateBar from './date-bar'
 import EpgRow from './row'
 import EpgBanner from './row/banner'
+import EpgTodayDate from './today'
 import { animateHorizontal, animateVertical } from '../utils/animations'
 import { constants } from '../utils/constants'
-import EpgTodayDate from './today'
 import { getCurrentTimeframeIndex } from '../utils/currentTimeframe'
 
 interface EpgComponentProps {
@@ -26,8 +26,8 @@ const EpgComponent: React.FC<EpgComponentProps> = ({
     getCurrentTimeframeIndex(timeframes)
   )
 
-  const [verticalStyle, setVerticalStyle] = useState<any>()
-  const [horizontalStyle, setHorizontalStyle] = useState<any>()
+  const [verticalStyle, setVerticalStyle] = useState<CSSProperties>({})
+  const [horizontalStyle, setHorizontalStyle] = useState<CSSProperties>({})
 
   const calculateVerticalScroll = useCallback(() => {
     if (verticalIndex >= constants.VERTICAL_SCROLL_PIVOT) {
