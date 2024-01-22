@@ -12,10 +12,9 @@
 }
 
 .date-bar-item {
-  background: #281a3b;
+  background: rgb(40, 26, 59, 0.7);
   height: 50px;
   display: inline-block;
-  border-radius: 10px;
   outline: 1px solid black
 }
 
