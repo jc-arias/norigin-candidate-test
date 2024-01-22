@@ -7,7 +7,7 @@ export const getDailyTimeframes = () => {
 
   for (
     let i = 0;
-    i < constants.HOURS_IN_A_DAY / constants.HOURS_IN_A_TIMEFRAME;
+    i <= constants.HOURS_IN_A_DAY / constants.HOURS_IN_A_TIMEFRAME;
     i++
   ) {
     timeframes.push(
