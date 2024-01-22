@@ -5,27 +5,26 @@ import EpgBanner from './row/banner'
 import { animateHorizontal, animateVertical } from '../utils/animations'
 import { constants } from '../utils/constants'
 import EpgTodayDate from './today'
+import { getCurrentTimeframeIndex } from '../utils/currentTimeframe'
 
 interface EpgComponentProps {
   channels: Channel[]
   hours: Date[]
-  onFocusSelf: Function
-  timeframes: Array<{ start: Date; end: Date }>
+  onSetFocus: Function
+  timeframes: Array<Timeframe>
 }
 
 const EpgComponent: React.FC<EpgComponentProps> = ({
   channels,
   hours,
-  onFocusSelf,
+  onSetFocus,
   timeframes
 }) => {
-  useEffect(() => {
-    onFocusSelf()
-  }, [])
-
   const [verticalIndex, setVerticalIndex] = useState<number>(0)
   const [horizontalIndex, setHorizontalIndex] = useState<number>(0)
-  const [timeframeIndex, setTimeframeIndex] = useState<number>(0)
+  const [timeframeIndex, setTimeframeIndex] = useState<number>(
+    getCurrentTimeframeIndex(timeframes)
+  )
 
   const [verticalStyle, setVerticalStyle] = useState<any>()
   const [horizontalStyle, setHorizontalStyle] = useState<any>()
@@ -44,6 +43,10 @@ const EpgComponent: React.FC<EpgComponentProps> = ({
   useEffect(() => {
     calculateVerticalScroll()
   }, [verticalIndex])
+
+  useEffect(() => {
+    calculateHorizontalScroll()
+  }, [horizontalIndex])
 
   const calculateHorizontalScroll = useCallback(() => {
     const item = channels[verticalIndex].schedules[horizontalIndex]
@@ -65,10 +68,6 @@ const EpgComponent: React.FC<EpgComponentProps> = ({
     }
   }, [channels, timeframes, verticalIndex, horizontalIndex])
 
-  useEffect(() => {
-    calculateHorizontalScroll()
-  }, [horizontalIndex])
-
   return (
     <>
       <EpgBanner />
@@ -88,6 +87,7 @@ const EpgComponent: React.FC<EpgComponentProps> = ({
               onFocusRow={setVerticalIndex}
               onFocusItem={setHorizontalIndex}
               horizontalStyle={horizontalStyle}
+              onSetFocus={onSetFocus}
             />
           )
         })}

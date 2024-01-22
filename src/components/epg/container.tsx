@@ -10,7 +10,7 @@ import { getDailyTimeframes } from './utils/dailyTimeframes'
 import './index.css'
 
 const EpgContainer: React.FC = () => {
-  const { ref, focusKey, focusSelf } = useFocusable({
+  const { ref, focusKey, setFocus } = useFocusable({
     focusKey: 'EPG_CONTAINER'
   })
 
@@ -43,7 +43,7 @@ const EpgContainer: React.FC = () => {
             channels={data.channels}
             hours={hours}
             timeframes={timeframes}
-            onFocusSelf={focusSelf}
+            onSetFocus={setFocus}
           />
         ) : (
           <></>

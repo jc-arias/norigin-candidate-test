@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react'
+import React, { useEffect, useMemo } from 'react'
 import InteractiveElement from '../../../../../elements/list-items'
 import { formatTimestamp } from '../../../utils/formatTimestamp'
 import { getWidth } from '../../../utils/getWidth'
@@ -11,6 +11,8 @@ interface ScheduleItemProps {
   itemIndex: number
   onFocusRow: Function
   onFocusItem: Function
+  focusId: string,
+  onSetFirstFocus: Function
 }
 
 const ScheduleItem: React.FC<ScheduleItemProps> = ({
@@ -19,7 +21,9 @@ const ScheduleItem: React.FC<ScheduleItemProps> = ({
   rowIndex,
   itemIndex,
   onFocusRow,
-  onFocusItem
+  onFocusItem,
+  focusId,
+  onSetFirstFocus
 }) => {
   const { title, start, end } = item
 
@@ -42,6 +46,11 @@ const ScheduleItem: React.FC<ScheduleItemProps> = ({
     return end > now && now > start
   }, [item])
 
+  useEffect(() => {
+    if (rowIndex === 0 && isLive) {
+      onSetFirstFocus(focusId)
+    }
+  }, [])
   return (
     <InteractiveElement
       className={`schedule-item ${isLive ? 'live' : ''}`}

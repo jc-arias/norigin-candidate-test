@@ -17,3 +17,8 @@ interface Channel {
 interface EpgResponse {
   channels: Channel[]
 }
+
+interface Timeframe {
+  start: Date
+  end: Date
+}

@@ -6,6 +6,7 @@
   outline: 3px solid black;
   overflow: hidden;
   white-space: nowrap;
+  border-radius: 10px;
 }
 
 .schedule-item h1,
@@ -26,6 +27,7 @@
 
 .schedule-item-focused {
   background: #b357ea;
+  color: black;
 }
 
 .live {

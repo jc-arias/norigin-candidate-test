@@ -11,4 +11,6 @@
   line-height: 50px;
   vertical-align: middle;
   font-size: 30px;
+  border-radius: 10px;
+  outline: 1px solid black;
 }

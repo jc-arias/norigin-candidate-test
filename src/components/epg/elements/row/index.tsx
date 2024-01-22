@@ -9,6 +9,7 @@ interface EpgRowProps {
   onFocusRow: Function
   onFocusItem: Function
   horizontalStyle: Object
+  onSetFocus: Function
 }
 
 const EpgRow: React.FC<EpgRowProps> = ({
@@ -16,7 +17,8 @@ const EpgRow: React.FC<EpgRowProps> = ({
   rowIndex,
   onFocusRow,
   onFocusItem,
-  horizontalStyle
+  horizontalStyle,
+  onSetFocus
 }) => {
   const { id, title, images, schedules } = channel
   return (
@@ -27,12 +29,14 @@ const EpgRow: React.FC<EpgRowProps> = ({
           return (
             <ScheduleItem
               key={`${title}-schedule-item-number-${itemIdx}`}
+              focusId={`${title}-schedule-item-number-${itemIdx}`}
               item={item}
               channel={title}
               rowIndex={rowIndex}
               itemIndex={itemIdx}
               onFocusRow={onFocusRow}
               onFocusItem={onFocusItem}
+              onSetFirstFocus={onSetFocus}
             />
           )
         })}
